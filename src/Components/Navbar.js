@@ -4,12 +4,12 @@ import cross from '../assets/close.svg'
 
 function Navbar() {
 
-    const NavItems = ()=>{
+    const NavItems = ({ onClick = () => {} })=>{
         return(
-            <ul className='nav-ul flex gap-4'>
+            <ul className='flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20'>
                 {["Home","About","Projects","Contact"].map((item,index)=>(
-                    <li key={index} className='nav-li'>
-                        <a href="/" className='nav-li_a text-neutral-200'> {item} </a>
+                    <li key={index} className='text-neutral-400 hover:text-white font-generalsans max-sm:hover:bg-black-500 max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5'>
+                        <a href="/" className='text-lg md:text-base hover:text-white transition-colors' onClick={onClick}> {item} </a>
                     </li>
                 ))}
 
@@ -19,24 +19,35 @@ function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false)
 
-    const toggle = ()=>{
-        setIsOpen((prevIsOpen)=>!prevIsOpen)
-    }
+    const toggleMenu = () => setIsOpen(!isOpen);
+    const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className='fixed top-0 left-0 right-0 z-50 bg-black/90'>
-        <div className='max-w-7xl mx-auto'>
-            <div className='flex justify-between items-center py-5 mx-auto px-5'>
-                <a href="/" className='text-neutral-400 font-bold text-xl hover:text-white transition-colors'>Akshay</a>
-                <button onClick={toggle} className='text-neutral-400 hover:text-white focus:outline-none sm:hidden flex' aria-label='Toggle menu'>
-                     <img src={isOpen? cross:menu} alt="toggle" className='w-6 h-6' />
-                </button>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-between items-center py-5 mx-auto c-space">
+          <a href="/" className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">
+            Akshay
+          </a>
 
-                <nav className='sm:flex hidden'>
-                    <NavItems/>
-                </nav>
-            </div>
+          <button
+            onClick={toggleMenu}
+            className="text-neutral-400 hover:text-white focus:outline-none sm:hidden flex"
+            aria-label="Toggle menu">
+            <img src={isOpen ? cross : menu} alt="toggle" className="w-6 h-6" />
+          </button>
+
+          <nav className="sm:flex hidden">
+            <NavItems />
+          </nav>
         </div>
+      </div>
+
+      <div className={`absolute left-0 right-0 bg-black-200 backdrop-blur-sm transition-all duration-300 ease-in-out overflow-hidden z-20 mx-auto sm:hidden block ${isOpen ? 'max-h-screen' : 'max-h-0 hidden'}`}>
+        <nav className="p-5">
+          <NavItems onClick={closeMenu} />
+        </nav>
+      </div>
     </header>
   )
 }
