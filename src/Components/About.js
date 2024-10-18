@@ -69,7 +69,7 @@ const About = () => {
                 backgoundImageOpacity={0.5}
                 showAtmosphere
                 // showGraticules
-                globeImageUrl="//unpkg.com/three-globe/example/img/earth-day.jpg"
+                globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
                 bumpImageUrl="/unpkg.com/three-globe/example/img/earth-topology.png"
                 labelsData={[
                   {
