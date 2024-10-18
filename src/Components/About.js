@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import grid1 from "../assets/aboutImg.png";
 import grid2 from "../assets/techStack.png";
-import grid3 from "../assets/vecteezy_matrix-video-web-programming-coding_13323101.mp4";
+import grid3 from "../assets/grid3.png";
 import grid4 from "../assets/grid4.png";
 import tick from '../assets/tick.svg'
 import copy from '../assets/copy.svg'
@@ -22,7 +22,7 @@ const About = () => {
     }
 
   return (
-    <section className="c-space my-20">
+    <section className="c-space my-20" id="about">
       <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
@@ -95,7 +95,7 @@ const About = () => {
         </div>
         <div className="xl:col-span-2 xl:row-span-3">
           <div className="grid-container">
-            <video src={grid3} alt="grid-3" loop autoPlay className="w-full sm:h-[266px] h-fit object-contain" />
+            <img src={grid3} alt="grid-3" loop autoPlay className="w-full sm:h-[266px] h-fit object-contain" />
 
             <div>
               <p className="grid-headtext">My Passion for Coding</p>
